@@ -1,28 +1,32 @@
-import java.util.Stack;
+import java.util.Scanner;
 
-    public class PalindromeCheckerApp {
-        public static void main(String[] args) {
+public class PalindromeCheckerApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string to check if it is a palindrome: ");
+        String input = scanner.nextLine();
 
-            String input = "noon";
+        String normalized = input.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
 
-            Stack<Character> stack = new Stack<>();
+        boolean isPalindrome = true;
+        int left = 0;
+        int right = normalized.length() - 1;
 
-
-            for (char c : input.toCharArray()) {
-                stack.push(c);
+        while (left < right) {
+            if (normalized.charAt(left) != normalized.charAt(right)) {
+                isPalindrome = false;
+                break;
             }
-
-            boolean isPalindrome = true;
-
-
-            for (char c : input.toCharArray()) {
-                if (c != stack.pop()) {
-                    isPalindrome = false;
-                    break;
-                }
-            }
-
-            System.out.println("Input: " + input);
-            System.out.println("Is Palindrome? " + isPalindrome);
+            left++;
+            right--;
         }
+
+        if (isPalindrome) {
+            System.out.println("The input is a palindrome.");
+        } else {
+            System.out.println("The input is NOT a palindrome.");
+        }
+
+        scanner.close();
     }
+}
