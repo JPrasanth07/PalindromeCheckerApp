@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 class PalindromeService {
 
@@ -6,15 +6,15 @@ class PalindromeService {
 
         String normalized = input.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
 
-        int start = 0;
-        int end = normalized.length() - 1;
+        LinkedList<Character> list = new LinkedList<>();
+        for (char c : normalized.toCharArray()) {
+            list.add(c);
+        }
 
-        while (start < end) {
-            if (normalized.charAt(start) != normalized.charAt(end)) {
+        while (list.size() > 1) {
+            if (!list.removeFirst().equals(list.removeLast())) {
                 return false;
             }
-            start++;
-            end--;
         }
 
         return true;
