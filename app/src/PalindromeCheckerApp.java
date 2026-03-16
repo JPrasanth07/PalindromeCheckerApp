@@ -1,4 +1,4 @@
-﻿import java.util.Scanner;
+import java.util.Scanner;
 
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
@@ -6,7 +6,6 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string to check if it is a palindrome: ");
         String input = scanner.nextLine();
 
-        // Normalize by removing non-alphanumeric characters and lowercasing
         String normalized = input.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
 
         boolean isPalindrome = true;
@@ -23,7 +22,7 @@ public class PalindromeCheckerApp {
         }
 
         if (isPalindrome) {
-            System.out.println("The input is a palindrome (ignoring non-alphanumeric characters).");
+            System.out.println("The input is a palindrome.");
         } else {
             System.out.println("The input is NOT a palindrome.");
         }
