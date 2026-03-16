@@ -6,13 +6,8 @@ class PalindromeService {
 
         String normalized = input.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
 
-        LinkedList<Character> list = new LinkedList<>();
-        for (char c : normalized.toCharArray()) {
-            list.add(c);
-        }
-
-        while (list.size() > 1) {
-            if (!list.removeFirst().equals(list.removeLast())) {
+        for (int i = 0; i < normalized.length() / 2; i++) {
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
                 return false;
             }
         }
