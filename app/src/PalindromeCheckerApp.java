@@ -4,12 +4,15 @@ class PalindromeService {
 
     public boolean checkPalindrome(String input) {
 
-        String normalized = input.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+        int start = 0;
+        int end = input.length() - 1;
 
-        for (int i = 0; i < normalized.length() / 2; i++) {
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
                 return false;
             }
+            start++;
+            end--;
         }
 
         return true;
@@ -27,7 +30,7 @@ public class PalindromeCheckerApp {
         PalindromeService service = new PalindromeService();
         boolean result = service.checkPalindrome(input);
 
-        System.out.println("Is Palindrome? " + result);
+        System.out.println("Is Palindrome? : " + result);
 
         sc.close();
     }
