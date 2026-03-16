@@ -1,14 +1,16 @@
-import java.util.*;
+import java.util.Scanner;
 
 class PalindromeService {
 
     public boolean checkPalindrome(String input) {
 
+        String normalized = input.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+
         int start = 0;
-        int end = input.length() - 1;
+        int end = normalized.length() - 1;
 
         while (start < end) {
-            if (input.charAt(start) != input.charAt(end)) {
+            if (normalized.charAt(start) != normalized.charAt(end)) {
                 return false;
             }
             start++;
